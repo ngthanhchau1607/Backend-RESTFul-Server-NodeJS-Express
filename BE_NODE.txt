@@ -1,0 +1,4 @@
+cái này danh cho người mới bắt đầu sử dung MySQL (docker , dbver)
+
+nhánh master là sử dung MySQL (docker , dbver)
+nhánh chau là sử dung mongodb 
