@@ -13,6 +13,7 @@
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "express-fileupload": "^1.4.0",
     "mongoose": "^8.8.2",
     "mysql2": "^3.11.4",
     "nodemon": "^3.1.7"
