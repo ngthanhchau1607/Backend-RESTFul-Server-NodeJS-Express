@@ -30,6 +30,8 @@ const postUpLoadMultipleFile =async() =>{
         return await postUpLoadSingleFile(req,res)
     }
 }
+
+
 module.exports = {
     postUpLoadSingleFile,postUpLoadMultipleFile
 }
