@@ -2,7 +2,7 @@ const express = require('express')
 const connection = require('../config/database')
 const {uploadSingleFile,uploadMultipleFile} = require('../services/fileService')
 const Customer = require('../models/customer') 
-const {createCustomerService ,createArrayCustomerService,getAllCustomerService,putUpdateCustomerService} = require('../services/customerService')
+const {createCustomerService ,createArrayCustomerService,getAllCustomerService,putUpdateCustomerService,deleteACustomerService} = require('../services/customerService')
 const postCreateCustomer = async(req,res) => {
 
    let {name,adress,phone,email,description} = req.body;
@@ -82,10 +82,21 @@ const postCreateArrayCustomer = async(req,res) => {
     }
  }
 
+ const deleteACustomer = async(req,res) => {
+
+    let {id } = req.body.id;
+    let result = await deleteACustomerService(id);
+    return res.status(200).json({
+        EC:0,
+        data:result
+    })
+    
+ }
 
 module.exports = {
     postCreateCustomer,
     postCreateArrayCustomer,
     getAllCustomer,
-    putUpdateCustomer
+    putUpdateCustomer,
+    deleteACustomer
 }
