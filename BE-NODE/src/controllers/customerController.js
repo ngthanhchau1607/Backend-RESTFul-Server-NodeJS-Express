@@ -1,4 +1,5 @@
 const express = require('express')
+
 const connection = require('../config/database')
 const {uploadSingleFile,uploadMultipleFile} = require('../services/fileService')
 const Customer = require('../models/customer') 
@@ -51,18 +52,19 @@ const postCreateArrayCustomer = async(req,res) => {
 
  const getAllCustomer = async(req,res) => {
 
-    let customers = await getAllCustomerService();
-    if(customers) {
-        return res.status(200).json({
-            EC:0,
-            data:customers
-       })
-    }else{
-        return res.status(200).json({
-            EC:-1,
-            data:customers
-       })
+    let limit = req.query.limit;
+    let page = req.query.page;
+    let name = req.query.name;
+    let result = null ;
+    if (limit && page ){
+        result = await getAllCustomerService(limit,page,name,req.query);
+    }else {
+        result = await getAllCustomerService();
     }
+    return res.status(200).json({
+        EC:0,
+        data:result
+   })   
  }
 
  const putUpdateCustomer = async(req,res) => {
